@@ -51,9 +51,17 @@
     }
 
     nav ul {
-      list-style: none;
+      list-style: none; /* No dots */
       display: flex;
       gap: 2rem;
+      padding-left: 0; /* ensure no padding */
+      margin: 0; /* ensure no margin */
+    }
+
+    nav ul li {
+      list-style: none; /* Explicitly no dots on li inside nav */
+      margin: 0; /* reset margin */
+      padding: 0; /* reset padding */
     }
 
     nav ul li a {
@@ -157,6 +165,7 @@
 
     #hero {
       text-align: center;
+      justify-content: flex-start;
       padding: 5rem 1rem;
       background: linear-gradient(to right, #e8f1f8, #cfddec);
       animation: fadeInUp 1s ease both;
@@ -209,7 +218,9 @@
       }
     }
 
-    ul li {
+    /* Changed this so it won't affect navbar ul li */
+    /* Apply dots only for ul li outside nav */
+    body > section ul li {
       margin-left: 1rem;
       padding-left: 0.5rem;
       list-style: disc;
@@ -302,16 +313,17 @@
           <li>Python, SQL/MySQL</li>
           <li>AWS, Azure, VirtualBox</li>
           <li>Wireshark, Nmap, Postman</li>
-          <li>Adobe Premiere Pro & Photoshop</li>
+          <li>Adobe Premiere Pro, Photoshop</li>
         </ul>
       </div>
       <div class="card">
         <h3>Soft Skills</h3>
         <ul>
-          <li>Communication & Teamwork</li>
-          <li>Time Management</li>
-          <li>Analytical Thinking</li>
-          <li>Documentation</li>
+          <li>Team collaboration</li>
+          <li>Effective communication</li>
+          <li>Problem solving</li>
+          <li>Adaptability & flexibility</li>
+          <li>Time management</li>
         </ul>
       </div>
     </div>
@@ -370,18 +382,9 @@
   <script>
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
-
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('open');
       mobileMenu.classList.toggle('show');
-    });
-
-    // Close menu when clicking a link
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('show');
-      });
     });
   </script>
 </body>

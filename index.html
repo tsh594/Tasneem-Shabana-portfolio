@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tasneem Shabana | IT Portfolio</title>
+  <style>
+    :root {
+      --bg-color: #f0f4f8;
+      --primary-color: #1d3557;
+      --accent-color: #457b9d;
+      --text-color: #222;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--accent-color);
+    }
+
+    nav {
+      background: var(--card-bg);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul li a {
+      position: relative;
+    }
+
+    nav ul li a:hover::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background-color: var(--accent-color);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: var(--primary-color);
+      margin: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.open div:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.open div:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open div:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--card-bg);
+      padding: 1rem;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      width: 200px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      border-radius: 8px;
+      z-index: 999;
+    }
+
+    .mobile-menu.show {
+      display: flex;
+      animation: fadeIn 0.3s ease-in-out forwards;
+    }
+
+    .mobile-menu a {
+      padding: 0.8rem;
+      color: var(--primary-color);
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    .mobile-menu a:hover {
+      background-color: #e8f1f8;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 3rem 0;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.5rem;
+    }
+
+    #hero {
+      text-align: center;
+      padding: 5rem 1rem;
+      background: linear-gradient(to right, #e8f1f8, #cfddec);
+      animation: fadeInUp 1s ease both;
+    }
+
+    #hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+
+    #hero p {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .two-col {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 1s ease both;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    ul li {
+      margin-left: 1rem;
+      padding-left: 0.5rem;
+      list-style: disc;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      border: 2px solid var(--primary-color);
+      border-radius: 0.3rem;
+      color: var(--primary-color);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--primary-color);
+      color: #fff;
+    }
+
+    footer {
+      background: var(--card-bg);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- BODY CONTENT GOES HERE -->
+  <nav>
+    <div class="container">
+      <a href="#hero"><strong>Tasneem Shabana</strong></a>
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section id="hero">
+    <div class="container">
+      <h1>Tasneem Shabana</h1>
+      <p>IT major at George Mason University focused on cybersecurity, database systems, and data analytics. Passionate about building full-stack solutions and exploring generative AI.</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>I am pursuing a B.S. in Information Technology at George Mason University (Class of 2026). I have a strong foundation in cybersecurity (Wireshark, Nmap), database optimization, and data analytics with hands-on experience using React, Vite, and Java. I also have creative skills in Adobe Premiere Pro and Photoshop, which help me communicate ideas visually and professionally.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container grid two-col">
+      <div class="card">
+        <h3>Technical Skills</h3>
+        <ul>
+          <li>Java, JavaScript, HTML/CSS</li>
+          <li>React + Vite</li>
+          <li>Python, SQL/MySQL</li>
+          <li>AWS, Azure, VirtualBox</li>
+          <li>Wireshark, Nmap, Postman</li>
+          <li>Adobe Premiere Pro & Photoshop</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Soft Skills</h3>
+        <ul>
+          <li>Communication & Teamwork</li>
+          <li>Time Management</li>
+          <li>Analytical Thinking</li>
+          <li>Documentation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <h2>Experience</h2>
+      <div class="card">
+        <h3>Undergraduate Teaching Assistant</h3>
+        <p><em>George Mason University, Aug 2024 – Dec 2024</em></p>
+        <ul>
+          <li>Led discussion sessions and provided academic support to IT students.</li>
+          <li>Helped students debug code and understand complex concepts.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="certificates">
+    <div class="container">
+      <h2>Certificates</h2>
+      <div class="card">
+        <h4>Web Development Certificate with Honors</h4>
+        <p><em>CodePath, Feb – Apr 2025</em></p>
+        <p>Earned recognition for top performance in a full-stack web development course covering React, HTML/CSS, JavaScript, and deployment best practices.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="card">
+        <h4>Capstone Project</h4>
+        <p><em>George Mason University, 2024–2025</em></p>
+        <p>Built real-world IT solutions for a client using front-end technologies, collaborative planning, and implementation tools.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:tshabana@gmu.edu">tshabana@gmu.edu</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/tasneem-shabana-8b968324b/" target="_blank">linkedin.com/in/tasneem-shabana</a></p>
+      <p>GitHub: <a href="https://github.com/tsh594" target="_blank">github.com/tsh594</a></p>
+      <a href="#hero" class="btn">Back to Top</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Tasneem Shabana. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('show');
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('show');
+      });
+    });
+  </script>
+</body>
+</html>
